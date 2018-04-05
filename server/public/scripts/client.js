@@ -9,17 +9,21 @@ const appController = app.controller('AppController', ['$http', function ($http)
         list: []
     };
 
+    
+
     self.getLocations = () => {
         $http({
             method: 'GET',
             url:'/location',
         }).then((response) => {
-            self.locations.list = response.data;
+            console.log(response.data.rows);
+            self.locations.list = response.data.rows;
         }).catch((error) => {
             console.log('error on get', error);
         })
     }
-    
+    self.getLocations();
+
     self.findLocation = function (location) {
         console.log('in find location');
         success = function (pos) {
@@ -36,7 +40,8 @@ const appController = app.controller('AppController', ['$http', function ($http)
             data: {
                 label: location.label,
                 lat: crd.latitude,
-                long: crd.longitude
+                long: crd.longitude,
+                accuracy: crd.accuracy
             }
         }).then((response) => {
             console.log('sent location to db');
@@ -55,6 +60,15 @@ const appController = app.controller('AppController', ['$http', function ($http)
         navigator.geolocation.getCurrentPosition(success, error, geoOptions)
     }
 
+    self.deleteLocation = (id) => {
+        $http.delete(`/location/${id}`)
+        .then((response) => {
+            self.getLocations();
+        }).catch((error) => {
+            console.log('error on delete:', error);
+            
+        })
+    }
 
 }])
 

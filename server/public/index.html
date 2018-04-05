@@ -24,18 +24,30 @@
                 <th>
                     Latitude
                 </th>
+                <th>
+                    Accuracy
+                </th>
+                <th>
+                    Delete
+                </th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="location in vm.locations.list">
                 <td>
-                    {{location.label}}
+                    {{location.location_name}}
                 </td>
                 <td>
                     {{location.longitude}}
                 </td>
                 <td>
                     {{location.latitude}}
+                </td>
+                <td>
+                    {{location.accuracy}} m
+                </td>
+                <td>
+                    <button ng-click="vm.deleteLocation(location.id)">Go!</button>
                 </td>
             </tr>
         </tbody>

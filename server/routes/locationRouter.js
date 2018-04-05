@@ -7,8 +7,8 @@ const bodyParser =require('body-parser');
 router.post('/', (req, res) => {
     console.log(req.body);
     let point = req.body;
-    const sqlText = `INSERT INTO location (location_name, longitude, latitude) VALUES ($1, $2, $3)`;
-    pool.query(sqlText,[point.label, point.long, point.lat])
+    const sqlText = `INSERT INTO location (location_name, longitude, latitude, accuracy) VALUES ($1, $2, $3, $4)`;
+    pool.query(sqlText,[point.label, point.long, point.lat, point.accuracy])
     .then((result) => {
         res.sendStatus(200);
     }).catch((error) => {
@@ -25,6 +25,17 @@ router.get('/', (req, res) =>{
     }).catch((error) => {
         res.sendStatus(500); 
         console.log('error on get:', error);
+    })
+})
+
+router.delete('/:id', (req, res) => {
+    const id = req.params.id;
+    const sqlText = `DELETE from location where id=$1`;
+    pool.query(sqlText, [id])
+    .then((result) => {
+        res.sendStatus(200);    
+    }).catch((error) => {
+        res.sendStatus(500);
     })
 })
 
