@@ -19,10 +19,10 @@
                     Location Name
                 </th> 
                 <th>
-                    Longitude
+                    Latitude
                 </th>
                 <th>
-                    Latitude
+                    Longitude
                 </th>
                 <th>
                     Accuracy
@@ -38,13 +38,13 @@
                     {{location.location_name}}
                 </td>
                 <td>
-                    {{location.longitude}}
-                </td>
-                <td>
                     {{location.latitude}}
                 </td>
                 <td>
-                    {{location.accuracy}} m
+                    {{location.longitude}}
+                </td>
+                <td>
+                    {{location.accuracy}}m
                 </td>
                 <td>
                     <button ng-click="vm.deleteLocation(location.id)">Go!</button>
