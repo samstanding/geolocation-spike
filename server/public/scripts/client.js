@@ -57,7 +57,7 @@ const appController = app.controller('AppController', ['$http', function ($http)
             enableHighAccuracy: true
         }
 
-        navigator.geolocation.getCurrentPosition(success, error, geoOptions)
+        navigator.geolocation.watchPosition(success, error, geoOptions)
     }
 
     self.deleteLocation = (id) => {
