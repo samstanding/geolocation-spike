@@ -54,10 +54,10 @@ const appController = app.controller('AppController', ['$http', function ($http)
             console.log('error on finding location: ', err);
         }
         let geoOptions = {
-            enableHighAccuracy: true
+            maximumAge: 5 * 60 * 1000,
         }
 
-        navigator.geolocation.watchPosition(success, error, geoOptions)
+        navigator.geolocation.getCurrentPosition(success, error, geoOptions)
     }
 
     self.deleteLocation = (id) => {
