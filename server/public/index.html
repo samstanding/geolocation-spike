@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vendors/angular.min.js"></script>
+    <script src="scripts/client.js"></script>
+    <title>Geolocation Spike</title>
+</head>
+<body ng-controller="AppController as vm">
+    <h1>Spike!</h1>
+    <input type="text" ng-model="newLocation.label" placeholder="where are you?">
+    <button ng-click="vm.findLocation(newLocation); newLocation= {}">Click Me</button>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Location Name
+                </th> 
+                <th>
+                    Longitude
+                </th>
+                <th>
+                    Latitude
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="location in vm.locations.list">
+                <td>
+                    {{location.label}}
+                </td>
+                <td>
+                    {{location.longitude}}
+                </td>
+                <td>
+                    {{location.latitude}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html> 
