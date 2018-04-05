@@ -16,7 +16,6 @@ const appController = app.controller('AppController', ['$http', function ($http)
             method: 'GET',
             url:'/location',
         }).then((response) => {
-            console.log(response.data.rows);
             self.locations.list = response.data.rows;
         }).catch((error) => {
             console.log('error on get', error);
