@@ -42,7 +42,7 @@ const appController = app.controller('AppController', ['$http', function ($http)
             data: {
                 label: location.label,
                 lat: watchArray[watchArray.length-1].lat,
-                long: watchArray[watchArray.length-1].longitude,
+                long: watchArray[watchArray.length-1].long,
                 accuracy:  watchArray[watchArray.length-1].accuracy
             }
         }).then((response) => {
@@ -56,7 +56,7 @@ const appController = app.controller('AppController', ['$http', function ($http)
             console.log('error on finding location: ', err);
         }
         let geoOptions = {
-            timeout: 30000,
+            timeout: 3000,
         }
 
         navigator.geolocation.watchPosition(success, error, geoOptions);
