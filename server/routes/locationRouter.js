@@ -18,7 +18,7 @@ router.post('/', (req, res) => {
 })
 
 router.get('/', (req, res) =>{
-    const sqlText = `SELECT * FROM location ORDER BY id`;
+    const sqlText = `SELECT * FROM location ORDER BY id DESC`;
     pool.query(sqlText)
     .then((result) => {
         res.send(result);   
