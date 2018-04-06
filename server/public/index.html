@@ -19,6 +19,9 @@
                     Location Name
                 </th> 
                 <th>
+                    Link to Map
+                </th>
+                <th>
                     Latitude
                 </th>
                 <th>
@@ -26,9 +29,6 @@
                 </th>
                 <th>
                     Accuracy
-                </th>
-                <th>
-                    Link to Map
                 </th>
                 <th>
                     Delete
@@ -41,6 +41,9 @@
                     {{location.location_name}}
                 </td>
                 <td>
+                    <a href="https://maps.google.com/?q={{location.latitude}},{{location.longitude}}">Link</a>
+                </td>
+                <td>
                     {{location.latitude}}
                 </td>
                 <td>
@@ -48,9 +51,6 @@
                 </td>
                 <td>
                     {{location.accuracy}}m
-                </td>
-                <td>
-                    <a href="https://maps.google.com/?q={{location.latitude}},{{location.longitude}}">Link</a>
                 </td>
                 <td>
                     <button ng-click="vm.deleteLocation(location.id)">Go!</button>
