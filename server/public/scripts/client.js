@@ -35,6 +35,7 @@ const appController = app.controller('AppController', ['$http', function ($http)
             console.log(`more or less ${crd.accuracy} meters`);
             let watchArray = [];
             watchArray.push({lat: crd.latitude, long: crd.longitude, accuracy: crd.accuracy});
+            console.log(watchArray);
         $http({
             method: 'POST',
             url: '/location',
