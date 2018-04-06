@@ -22,7 +22,7 @@ const appController = app.controller('AppController', ['$http', function ($http)
         })
     }
     self.getLocations();
-
+    
     self.findLocation = function (location) {
         console.log('in find location');
         success = function (pos) {
@@ -33,17 +33,14 @@ const appController = app.controller('AppController', ['$http', function ($http)
             console.log(`Latitude: ${crd.latitude}`);
             console.log(`Longitude: ${crd.longitude}`);
             console.log(`more or less ${crd.accuracy} meters`);
-            let watchArray = [];
-            watchArray.push({lat: crd.latitude, long: crd.longitude, accuracy: crd.accuracy});
-            console.log(watchArray);
         $http({
             method: 'POST',
             url: '/location',
             data: {
                 label: location.label,
-                lat: watchArray[watchArray.length-1].lat,
-                long: watchArray[watchArray.length-1].long,
-                accuracy:  watchArray[watchArray.length-1].accuracy
+                lat: crd.latitude,
+                long: crd.longitude,
+                accuracy: crd.accuracy
             }
         }).then((response) => {
             console.log('sent location to db');
@@ -56,10 +53,10 @@ const appController = app.controller('AppController', ['$http', function ($http)
             console.log('error on finding location: ', err);
         }
         let geoOptions = {
-            timeout: 3000,
+            maximumAge: 5 * 60 * 1000,
         }
 
-        navigator.geolocation.watchPosition(success, error, geoOptions);
+        navigator.geolocation.getCurrentPosition(success, error, geoOptions)
     }
 
     self.deleteLocation = (id) => {
