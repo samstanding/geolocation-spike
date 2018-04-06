@@ -22,7 +22,7 @@ const appController = app.controller('AppController', ['$http', function ($http)
         })
     }
     self.getLocations();
-    
+
     self.findLocation = function (location) {
         console.log('in find location');
         success = function (pos) {
@@ -53,7 +53,7 @@ const appController = app.controller('AppController', ['$http', function ($http)
             console.log('error on finding location: ', err);
         }
         let geoOptions = {
-            maximumAge: 5 * 60 * 1000,
+            enableHighAccuracy: true
         }
 
         navigator.geolocation.getCurrentPosition(success, error, geoOptions)
