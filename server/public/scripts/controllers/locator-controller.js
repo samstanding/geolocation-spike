@@ -1,7 +1,8 @@
 app.controller('LocController', ['$http', function ($http) {
     console.log('locator hears me');
     let self = this;
-    self.test={test: 'this is a test'}
+    
+    self.test={string: []};
     
 
     self.findLocation = () => {
@@ -15,14 +16,14 @@ app.controller('LocController', ['$http', function ($http) {
             console.log(`Longitude: ${crd.longitude}`);
             console.log(`more or less ${crd.accuracy} meters`);
             
-            
+        
            if (crd.latitude < target.latidude  && crd.longitude < target.longitude) {
                 self.test.string = 'D-FACCCCC!!!!!';
             } 
             else {
                 self.test.string = 'keep moving';
             }
-            console.log(self.string);
+            console.log(self.test.string);
         }
         
         error = (err) => {
