@@ -1,13 +1,10 @@
-app.controller('LocController', ['$http', function ($http) {
+app.controller('LocController', ['$http', '$scope', function ($http, $scope) {
     console.log('locator hears me');
     let self = this;
     
     self.alert = {
      signal: ''
     }
-
-    self.count = 3456;
-    
 
     self.findLocation = () => {
         console.log('in find locator location');
@@ -25,13 +22,15 @@ app.controller('LocController', ['$http', function ($http) {
                 self.alert.signal = 'D-FACCCCC!!!!!';
             } 
             else {
-                self.alert.signal = 'keep moving';
+                self.alert.signal = 'classroom';
             }
             console.log(self.alert);
+            $scope.$apply();
+           
             
             self.count++;
             console.log(self.count);
-        }
+        };
         
         error = (err) => {
             console.log('error in finding location: ', err);
