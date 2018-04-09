@@ -1,12 +1,11 @@
 app.controller('LocController', ['$http', function ($http) {
     console.log('locator hears me');
     let self = this;
-
-    let string;
+    self.test={test: 'this is a test'}
     
 
     self.findLocation = () => {
-        console.log('in find location');
+        console.log('in find locator location');
 
         success = (pos) => {
             let crd = pos.coords;
@@ -15,11 +14,15 @@ app.controller('LocController', ['$http', function ($http) {
             console.log(`Latitude: ${crd.latitude}`);
             console.log(`Longitude: ${crd.longitude}`);
             console.log(`more or less ${crd.accuracy} meters`);
-            if (crd.latitude < target.latidude  && crd.longitude > target.longitude) {
-                string = 'D-FACCCCC!!!!!';
-                navigator.geolocation.clearWatch(id)
+            
+            
+           if (crd.latitude < target.latidude  && crd.longitude < target.longitude) {
+                self.test.string = 'D-FACCCCC!!!!!';
+            } 
+            else {
+                self.test.string = 'keep moving';
             }
-
+            console.log(self.string);
         }
         
         error = (err) => {
