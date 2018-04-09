@@ -26,10 +26,6 @@ app.controller('LocController', ['$http', '$scope', function ($http, $scope) {
             }
             console.log(self.alert);
             $scope.$apply();
-           
-            
-            self.count++;
-            console.log(self.count);
         };
         
         error = (err) => {
