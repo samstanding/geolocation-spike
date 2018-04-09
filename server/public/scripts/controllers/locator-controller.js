@@ -2,7 +2,11 @@ app.controller('LocController', ['$http', function ($http) {
     console.log('locator hears me');
     let self = this;
     
-    self.test={string: []};
+    self.alert = {
+     signal: ''
+    }
+
+    self.count = 3456;
     
 
     self.findLocation = () => {
@@ -18,12 +22,15 @@ app.controller('LocController', ['$http', function ($http) {
             
         
            if (crd.latitude < target.latidude  && crd.longitude < target.longitude) {
-                self.test.string = 'D-FACCCCC!!!!!';
+                self.alert.signal = 'D-FACCCCC!!!!!';
             } 
             else {
-                self.test.string = 'keep moving';
+                self.alert.signal = 'keep moving';
             }
-            console.log(self.test.string);
+            console.log(self.alert);
+            
+            self.count++;
+            console.log(self.count);
         }
         
         error = (err) => {
@@ -36,11 +43,11 @@ app.controller('LocController', ['$http', function ($http) {
             longitude: -93.2635
         }
 
-        options = {
-            enableHighAccuracy: true
-        }
+        // options = {
+        //     enableHighAccuracy: true
+        // }
 
-        navigator.geolocation.watchPosition(success, error, options);
+        navigator.geolocation.watchPosition(success, error);
     }
 
     self.findLocation();
