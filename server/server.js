@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 const router = require('./routes/locationRouter');
 app.use('/location', router);
 
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 5000;
 
 app.listen(port, function () {
     console.log('listening on port: ', port);

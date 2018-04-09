@@ -1,0 +1,49 @@
+<h1>Tiger !</h1>
+    <input type="text" ng-model="newLocation.label" placeholder="where are you?">
+    <button ng-click="vm.findLocation(newLocation); newLocation= {}">Click Me</button>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Location Name
+                </th> 
+                <th>
+                    Link to Map
+                </th>
+                <th>
+                    Latitude
+                </th>
+                <th>
+                    Longitude
+                </th>
+                <th>
+                    Accuracy
+                </th>
+                <th>
+                    Delete
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="location in vm.locations.list">
+                <td>
+                    {{location.location_name}}
+                </td>
+                <td>
+                    <a href="https://maps.google.com/?q={{location.latitude}},{{location.longitude}}">Link</a>
+                </td>
+                <td>
+                    {{location.latitude}}
+                </td>
+                <td>
+                    {{location.longitude}}
+                </td>
+                <td>
+                    {{location.accuracy}}m
+                </td>
+                <td>
+                    <button ng-click="vm.deleteLocation(location.id)">Go!</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>

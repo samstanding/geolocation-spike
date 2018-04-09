@@ -1,62 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html lang="en" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="vendors/angular.min.js"></script>
+    <script src="vendors/angular-route.min.js"></script>
     <script src="scripts/client.js"></script>
+    <script src="scripts/controllers/addLocation-controller.js"></script>
+    <script src="scripts/controllers/locator-controller.js"></script>
     <title>Geolocation Spike</title>
 </head>
-<body ng-controller="AppController as vm">
-    <h1>Tiger !</h1>
-    <input type="text" ng-model="newLocation.label" placeholder="where are you?">
-    <button ng-click="vm.findLocation(newLocation); newLocation= {}">Click Me</button>
-    <table>
-        <thead>
-            <tr>
-                <th>
-                    Location Name
-                </th> 
-                <th>
-                    Link to Map
-                </th>
-                <th>
-                    Latitude
-                </th>
-                <th>
-                    Longitude
-                </th>
-                <th>
-                    Accuracy
-                </th>
-                <th>
-                    Delete
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="location in vm.locations.list">
-                <td>
-                    {{location.location_name}}
-                </td>
-                <td>
-                    <a href="https://maps.google.com/?q={{location.latitude}},{{location.longitude}}">Link</a>
-                </td>
-                <td>
-                    {{location.latitude}}
-                </td>
-                <td>
-                    {{location.longitude}}
-                </td>
-                <td>
-                    {{location.accuracy}}m
-                </td>
-                <td>
-                    <button ng-click="vm.deleteLocation(location.id)">Go!</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<body ng-app="myApp">
+    <nav>
+    <a href="/#!home">Home</a>
+    <a href="/#!locator">Locator</a>
+    </nav>
+    <main ng-view></main>
+
+    
 </body>
 </html> 
