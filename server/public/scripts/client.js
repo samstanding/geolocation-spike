@@ -13,6 +13,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         templateUrl: '/views/locator.html',
         controller: "LocController as vm",
     })
+    .when('/map', {
+        templateUrl: '/views/map.html',
+        controller: "MapController as vm"
+    })
     .otherwise ({
         template:  '<h1>404</h1>'
     });

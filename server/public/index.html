@@ -4,22 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles/main.css">
+    <script defer src="//maps.googleapis.com/maps/api/js?key=AIzaSyCO_7-h561XHIkv_gujZWUK_QfKRFVCvns"></script>
     <script src="vendors/angular.min.js"></script>
     <script src="vendors/angular-route.min.js"></script>
     <script src="scripts/client.js"></script>
     <script src="scripts/controllers/addLocation-controller.js"></script>
     <script src="scripts/controllers/locator-controller.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn01qjQnI0HBHGUfZCAL3f23rucriybHQ"></script>
+    <script src="scripts/controllers/map-controller.js"></script>
+    
 
     <title>Geolocation Spike</title>
-    <style>
-            /* Always set the map height explicitly to define the size of the div
-               * element that contains the map. */
-        
-            #map {
-              height: 100%;
-            }
-          </style>
+    
+    
 </head>
 <body ng-app="myApp">
     <nav>
