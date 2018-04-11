@@ -1,15 +1,9 @@
 app.controller('MapController', ['LocationService', '$scope', function ( LocationService, $scope) {
     let self = this;
-    self.map;
-    self.marker;
-
    
     self.getLocations = LocationService.getLocations;
     self.getLocations();
     self.locations = LocationService.locations;
-
-    
-    
 
     self.initMap = function () {
         console.log('in initMap');
@@ -31,7 +25,7 @@ app.controller('MapController', ['LocationService', '$scope', function ( Locatio
         self.infowindow = new google.maps.InfoWindow();
 
         for (let i =0; i <self.locations.list.length; i ++) {
-            console.log(self.locations.list[i]);
+            
             
             let marker = new google.maps.Marker({
                 position: new google.maps.LatLng(self.locations.list[i].latitude, self.locations.list[i].longitude),
@@ -45,11 +39,25 @@ app.controller('MapController', ['LocationService', '$scope', function ( Locatio
                     self.infowindow.open(self.map, marker );
                 }
             }) (marker, i));
-
             
         }
+
+        navigator.geolocation.watchPosition(function (position) {
+            console.log('in geolocator');
+            
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+
+        let personMarker = new google.maps.Marker({
+            position: new google.maps.LatLng(pos.lat, pos.lng),
+            map: self.map,
+            icon: './maps_marker.png'
+        });
+        })
         
-        }
+}
 
     self.initMap();
 
