@@ -8,7 +8,7 @@ app.controller('MapController', ['LocationService', '$scope', function ( Locatio
     self.getLocations();
     self.locations = LocationService.locations;
 
-    console.log(self.locations);
+    
     
 
     self.initMap = function () {
@@ -24,21 +24,30 @@ app.controller('MapController', ['LocationService', '$scope', function ( Locatio
                 lat: 44.978,
                 lng: -93.263
             },
-            zoom: 12,
+            zoom: 18,
             streetViewControl: false,
         })
+
+        self.infowindow = new google.maps.InfoWindow();
+
         for (let i =0; i <self.locations.list.length; i ++) {
             console.log(self.locations.list[i]);
             
-            self.marker = new google.maps.Marker({
+            let marker = new google.maps.Marker({
                 position: new google.maps.LatLng(self.locations.list[i].latitude, self.locations.list[i].longitude),
                 map: self.map,
                 title: self.locations.list[i].location_name,
             })
-        }
+
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                    self.infowindow.setContent(self.locations.list[i].location_name);
+                    self.infowindow.open(self.map, marker );
+                }
+            }) (marker, i));
+
             
-        
-     
+        }
         
         }
 
