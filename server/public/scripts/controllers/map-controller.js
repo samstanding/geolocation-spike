@@ -12,20 +12,18 @@ app.controller('MapController', ['LocationService', '$scope', function (Location
 
     self.findLocation = () => {
         console.log('in find location map');
+        let personMarker = new google.maps.Marker({
+            position: new google.maps.LatLng(44.978183, -93.2633481),
+            map: self.map,
+            icon: '../../img/maps_marker.png',
+        })
         success = (pos) => {
             let crd = pos.coords;
             console.log('your current position is: ');
             console.log(`Latitude: ${crd.latitude}`);
             console.log(`Longitude: ${crd.longitude}`);
             console.log(`more or less ${crd.accuracy} meters`);
-            personLocation.latitude = crd.latitude;
-            personLocation.longitude = crd.longitude;
-            
-            let personMarker = new google.maps.Marker({
-                position: new google.maps.LatLng(crd.latitude, crd.longitude),
-                map: self.map,
-                icon: '../../img/maps_marker.png',
-            })
+            personMarker.position = crd.latitude, crd.longitude;
             $scope.$apply();
         }
         error = (err) => {
@@ -35,10 +33,10 @@ app.controller('MapController', ['LocationService', '$scope', function (Location
         //     latidude: 44.978, 
         //     longitude: -93.2635
         // }
-        // options = {
-        //     enableHighAccuracy: true
-        // }
-        navigator.geolocation.watchPosition(success, error);
+        options = {
+            enableHighAccuracy: true
+        }
+        navigator.geolocation.watchPosition(success, error, options);
     }
     self.findLocation();
 
