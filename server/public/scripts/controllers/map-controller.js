@@ -25,15 +25,14 @@ app.controller('MapController', ['LocationService', '$scope', function (Location
         }
          else {
             let personMarker = new google.maps.Marker({
-                position: new google.maps.LatLng(crd.latitude, crd.longitude),
+                id: 1,
+                'position': new google.maps.LatLng(crd.latitude, crd.longitude),
                 map: self.map,
                 icon:image,
             })
             console.log(personMarker);
             markerStore = personMarker;
-            
         }
-           
         $scope.$apply();
     }
     error = (err) => {
