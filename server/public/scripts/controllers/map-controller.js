@@ -18,11 +18,10 @@ app.controller('MapController', ['LocationService', '$scope', function (Location
             console.log(`more or less ${crd.accuracy} meters`);
 
             let personMarker = {};
-        if (personMarker.hasOwnProperty('id')) {
+        if (personMarker.hasOwnProperty('position')) {
             personMarker.setPosition(new google.maps.LatLng(crd.latitude, crd.longitude));
         } else {
             personMarker = new google.maps.Marker({
-                id: 1,
                 position: new google.maps.LatLng(crd.latitude, crd.longitude),
                 map: self.map,
                 icon:image,
