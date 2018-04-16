@@ -21,7 +21,7 @@ app.controller('MapController', ['LocationService', '$scope', function (Location
         let personMarker = new google.maps.Marker({
                 position: new google.maps.LatLng(crd.latitude, crd.longitude),
                 map: self.map,
-                icon: '../../maps_marker.png',
+                icon:image,
             })
         $scope.$apply();
     }
