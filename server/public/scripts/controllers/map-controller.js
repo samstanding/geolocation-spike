@@ -17,12 +17,17 @@ app.controller('MapController', ['LocationService', '$scope', function (Location
             console.log(`Longitude: ${crd.longitude}`);
             console.log(`more or less ${crd.accuracy} meters`);
 
-           
-        let personMarker = new google.maps.Marker({
+        if (personMarker.hasOwnProperty(id)) {
+            personMarker.setPosition(new google.maps.LatLng(crd.latitude, crd.longitude));
+        } else {
+            let personMarker = new google.maps.Marker({
+                id: 1,
                 position: new google.maps.LatLng(crd.latitude, crd.longitude),
                 map: self.map,
                 icon:image,
             })
+        }
+           
         $scope.$apply();
     }
     error = (err) => {
