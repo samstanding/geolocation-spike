@@ -5,6 +5,8 @@ app.controller('MapController', ['LocationService', '$scope', function (Location
     self.getLocations();
     self.locations = LocationService.locations;
 
+    var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+
 
     self.findLocation = () => {
         console.log('in find location map');
@@ -19,7 +21,7 @@ app.controller('MapController', ['LocationService', '$scope', function (Location
         let personMarker = new google.maps.Marker({
                 position: new google.maps.LatLng(crd.latitude, crd.longitude),
                 map: self.map,
-                icon: '../../img/maps_marker.png',
+                icon: '../../maps_marker.png',
             })
         $scope.$apply();
     }
