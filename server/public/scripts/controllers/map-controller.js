@@ -5,7 +5,6 @@ app.controller('MapController', ['LocationService', '$scope', function (Location
     self.getLocations();
     self.locations = LocationService.locations;
 
-    let personMarker = new google.maps.Marker();
 
     self.findLocation = () => {
         console.log('in find location map');
@@ -16,11 +15,12 @@ app.controller('MapController', ['LocationService', '$scope', function (Location
             console.log(`Longitude: ${crd.longitude}`);
             console.log(`more or less ${crd.accuracy} meters`);
 
-            personMarker = {
+           
+        let personMarker = new google.maps.Marker({
                 position: new google.maps.LatLng(crd.latitude, crd.longitude),
                 map: self.map,
                 icon: '../../img/maps_marker.png',
-            }
+            })
         $scope.$apply();
     }
     error = (err) => {
