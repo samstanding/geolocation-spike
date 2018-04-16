@@ -25,7 +25,7 @@ app.controller('MapController', ['LocationService', '$scope', function (Location
             console.log('in if', personMarker);
         }
          else {
-            personMarker = new google.maps.Marker({
+            let personMarker = new google.maps.Marker({
                 position: new google.maps.LatLng(crd.latitude, crd.longitude),
                 map: self.map,
                 icon:image,
