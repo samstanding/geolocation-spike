@@ -17,12 +17,12 @@ app.controller('MapController', ['LocationService', '$scope', function (Location
             console.log(`Longitude: ${crd.longitude}`);
             console.log(`more or less ${crd.accuracy} meters`);
 
-            let markerStore = {};
+            let markerStore = {marker: null};
+            console.log(markerStore);
             
-        if (markerStore.hasOwnProperty('position')) {
-            markerStore.setPosition(new google.maps.LatLng(crd.latitude, crd.longitude));
-            
-        }
+        if (markerStore.marker !== null) {
+            markerStore.marker.setPosition(new google.maps.LatLng(crd.latitude, crd.longitude));
+        } 
          else {
             let personMarker = new google.maps.Marker({
                 id: 1,
@@ -31,7 +31,7 @@ app.controller('MapController', ['LocationService', '$scope', function (Location
                 icon:image,
             })
             console.log(personMarker);
-            markerStore = personMarker;
+            markerStore.marker = personMarker;
         }
         $scope.$apply();
     }
