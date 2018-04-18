@@ -95,7 +95,7 @@ app.controller('MapController', ['LocationService', '$scope', function (Location
         accuracy: 45,
         maxWait: 1500000
     }
-    navigator.geolocation.getAccurateCurrentPosition(success, error, geoprogress,options);
+    navigator.geolocation.getAccurateCurrentPosition(success, error, geoprogress, options);
 }
 self.findLocation();
 
